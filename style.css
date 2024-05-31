@@ -1,0 +1,21 @@
+body{
+    background-color:cadetblue;
+}
+h1, h2{
+    text-align: center;
+    padding-top: 20px;
+    margin-bottom: 20px;
+}
+.mainContainer{
+    width: 60%;
+    height: 250px;
+    margin-left: 20%;
+    background-color: aquamarine;
+}
+label{
+    padding-right: 10px;
+}
+.block{
+    margin-left: 10%;
+    margin-bottom: 20px;
+}
