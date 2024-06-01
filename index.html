@@ -11,20 +11,23 @@
 
 <div class="mainContainer">
     <h2 class="heading">Select the range between 1 and 10000</h2>
-    <form class="block"><label for="min-price" text="Min Price">Min Price</label>
-    <input id="min-price" type="number" range="1-1000"/><br></form>
 
-    <form class="block">
+    <div class="block">
+      <label for="min-price" text="Min Price">Min Price</label>
+    <input class="min-price" type="number" value="2500" step="100"/><br>
+    <br>
+
     <label for="mx-price" text="Max Price">Max Price</label>
-    <input id="mx-price" type="number"/></form>
+    <input class="mx-price" type="number" value="7500" step="100"/></div>
     
     <div class="rangeContainer">
-      <input id="price-range1" type="range" min="0" max="10000" value="1000" step="100"/>
-    <input id="price-range2" type="range" min="0" max="10000" value="8000" step="100"/></div>
+      <input class="min-range" type="range" min="0" max="10000" value="2500" step="1"/>
+    <input class="max-range" type="range" min="0" max="10000" value="7500" step="1"/>
+    </div>
 
-<div class="output">
+    <div class="output">
 
-</div>
+    </div>
 </div>
 
 <script src="script.js"></script>

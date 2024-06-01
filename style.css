@@ -43,7 +43,7 @@ height: 5px;
 background: none;
 pointer-events: none;
 appearance: none;
--moz-appearance: none;
+/* -moz-appearance: none; */
 
 }
 input[type="number"]::-webkit-outer-spin-button,
@@ -59,6 +59,7 @@ input[type="range"]::-webkit-slider-thumb {
     -webkit-appearance: none; 
     box-shadow: 0 0 6px rgba(0,0,0,0.5);
 } 
+
 input[type="range"]::-moz-range-thumb{
     height:17px;
     width:17px;
@@ -68,7 +69,4 @@ input[type="range"]::-moz-range-thumb{
     pointer-events: auto;
     -moz-appearance:none;
     box-shadow: 0 0 6px rgba(0,0,0,0.5);
-}
-input[type="number"]{
-    appearance:textfield;
 }
