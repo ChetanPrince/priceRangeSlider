@@ -1,19 +1,11 @@
-
-// How to grab values of  minPriceCircle when sliding left to right between 1 and 9000?
-// event listener on inputs in the slider div to select queries and then parsed them to extract integer from their values
-
-
-//minPriceCircle has to be set to minPriceValue input box and vice versa
-// an input is set and between 1 and 9000 as there is a gap of 1000 and minPriceInput is restricted to go above 9000 and below 1
-// when minPriceCircle is slided it shows a placeholder with the value and simultaneously minPriceValue input is set to that value
-// if minPriceCircle is slided to less than price gap then automatically maxPriceCircle is set to minPriceValue+priceGap
-
-
-// maxPriceCircle has to be set to maxPriceValue input box and vice versa
+// Bugs Identified :    price inputs have to be concise and should not be allowed negative numbers or inputs with decimal digits or numbers should be automatically converted to multiples of 100 after its closest input
+// Bugs: when price input notices price lower than min value gap an alert should be shown or price should automatically set to closes price possible and slider should act accordingly
 
 
 
- 
+
+
+
 const rangeInput = document.querySelectorAll(".rangeContainer input");
 const progress= document.querySelector(".slider .progress");
 let minValueGap = 1500;
