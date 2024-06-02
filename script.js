@@ -8,23 +8,23 @@
 
 const rangeInput = document.querySelectorAll(".rangeContainer input");
 const progress= document.querySelector(".slider .progress");
-let minValueGap = 1500;
+let minValueGap = 1000;
 const priceInput = document.querySelectorAll(".block input");
 
 // rangeSlider with slider Option
 priceInput.forEach(input =>{
     input.addEventListener("input", e =>{
-        let minVal=  parseInt(priceInput[0].value),
-        maxVal = parseInt(priceInput[1].value);
+        let minPrice=  parseInt(priceInput[0].value),
+        maxPrice = parseInt(priceInput[1].value);
         
-        if((maxVal-minVal >= minValueGap) && maxVal<=10000 && minVal>=0){
+        if((maxPrice-minPrice >= minValueGap) && maxPrice<=rangeInput[1].max && minPrice>=rangeInput[0].min){
             if(e.target.className ==="min-price"){
-                rangeInput[0].value = minVal;
-                progress.style.left = (minVal / rangeInput[0].max)*100 + "%";
+                rangeInput[0].value = minPrice;
+                progress.style.left = ((minPrice / rangeInput[0].max)*100) + "%";
             }
                 else{
-                    rangeInput[1].value = maxVal;
-                    progress.style.right = ((rangeInput[0].max - maxVal) / rangeInput[1].max)*100 + "%";
+                    rangeInput[1].value = maxPrice;
+                    progress.style.right =100-( maxPrice / rangeInput[1].max)*100 + "%";
                 }
                 
         }
@@ -54,8 +54,8 @@ else{
      
     priceInput[0].value = minVal;
     priceInput[1].value =maxVal;
-    progress.style.left = (minVal / rangeInput[0].max)*100 + "%";
-    progress.style.right = ((rangeInput[0].max - maxVal) / rangeInput[1].max)*100 + "%";
+    progress.style.left = ((minVal / rangeInput[0].max)*100) + "%";
+    progress.style.right = 100-( maxPrice / rangeInput[1].max)*100 + "%";
 }
 })
 });
