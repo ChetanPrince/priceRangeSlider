@@ -11,28 +11,37 @@ const priceInput = document.querySelectorAll(".block input");
 // rangeSlider with slider Option
 priceInput.forEach(input =>{
     input.addEventListener("input", e =>{
+        e.preventDefault();
+        if (priceInput[0].value.length >= 4 && priceInput[1].value.length >= 4) {
         let minPrice=  parseInt(priceInput[0].value),
         maxPrice = parseInt(priceInput[1].value);
-
-        if(maxPrice - minPrice <=minValueGap){
-            maxPrice = minPrice+minValueGap;
-            alert("Price should have a min and maximum output a 1000 rs apart")
-        }
         
         if((maxPrice-minPrice >= minValueGap) && maxPrice<=rangeInput[1].max && minPrice>=rangeInput[0].min){
             if(e.target.className ==="min-price"){
                 rangeInput[0].value = minPrice;
                 progress.style.left = ((minPrice / rangeInput[0].max)*100) + "%";
             }
-                else{
-                    rangeInput[1].value = maxPrice;
-                    progress.style.right =100-( maxPrice / rangeInput[1].max)*100 + "%";
-                }
-                
-        }
+            else{
+                rangeInput[1].value = maxPrice;
+                progress.style.right =100-( maxPrice / rangeInput[1].max)*100 + "%";
+            }}
+        else if(maxPrice - minPrice < minValueGap){  
+             if(e.target.className ==="min-price"){
+                 maxPrice = minPrice + minValueGap;
+                 priceInput[1].value = maxPrice;
+                 rangeInput[0].value = minPrice;
+                progress.style.left = ((minPrice / rangeInput[0].max)*100) + "%";
+             console.log(maxPrice);}
+             else{
+                minPrice = maxPrice - minValueGap;
+                priceInput[0].value = minPrice;
+                rangeInput[1].value = maxPrice;
+                progress.style.right =100-( maxPrice / rangeInput[1].max)*100 + "%";
+             }
+             }}
+    
+        })})
 
-})
-});
 
 
 
