@@ -1,5 +1,8 @@
-// Bugs Identified :    price inputs have to be concise and should not be allowed negative numbers or inputs with decimal digits or numbers should be automatically converted to multiples of 100 after its closest input
-// Bugs: when price input notices price lower than min value gap an alert should be shown or price should automatically set to closes price possible and slider should act accordingly
+//  negative numbers bug should not be allowed?
+// range lower than 4 numbers should not produce negative numbers
+//  also what if someone tries to enter 3 digit 
+
+
 
 
 
@@ -10,9 +13,8 @@ const priceInput = document.querySelectorAll(".block input");
 
 // rangeSlider with slider Option
 priceInput.forEach(input =>{
-    input.addEventListener("input", e =>{
+    input.addEventListener("blur", e =>{
         e.preventDefault();
-        if (priceInput[0].value.length >= 4 && priceInput[1].value.length >= 4) {
         let minPrice=  parseInt(priceInput[0].value),
         maxPrice = parseInt(priceInput[1].value);
         
@@ -30,14 +32,13 @@ priceInput.forEach(input =>{
                  maxPrice = minPrice + minValueGap;
                  priceInput[1].value = maxPrice;
                  rangeInput[0].value = minPrice;
-                progress.style.left = ((minPrice / rangeInput[0].max)*100) + "%";
-             console.log(maxPrice);}
+                progress.style.left = ((minPrice / rangeInput[0].max)*100) + "%";}
              else{
                 minPrice = maxPrice - minValueGap;
                 priceInput[0].value = minPrice;
                 rangeInput[1].value = maxPrice;
                 progress.style.right =100-( maxPrice / rangeInput[1].max)*100 + "%";
-             }
+      
              }}
     
         })})
