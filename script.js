@@ -3,9 +3,6 @@
 
 
 
-
-
-
 const rangeInput = document.querySelectorAll(".rangeContainer input");
 const progress= document.querySelector(".slider .progress");
 let minValueGap = 1000;
@@ -16,6 +13,11 @@ priceInput.forEach(input =>{
     input.addEventListener("input", e =>{
         let minPrice=  parseInt(priceInput[0].value),
         maxPrice = parseInt(priceInput[1].value);
+
+        if(maxPrice - minPrice <=minValueGap){
+            maxPrice = minPrice+minValueGap;
+            alert("Price should have a min and maximum output a 1000 rs apart")
+        }
         
         if((maxPrice-minPrice >= minValueGap) && maxPrice<=rangeInput[1].max && minPrice>=rangeInput[0].min){
             if(e.target.className ==="min-price"){
@@ -55,7 +57,7 @@ else{
     priceInput[0].value = minVal;
     priceInput[1].value =maxVal;
     progress.style.left = ((minVal / rangeInput[0].max)*100) + "%";
-    progress.style.right = 100-( maxPrice / rangeInput[1].max)*100 + "%";
+    progress.style.right = 100-( maxVal/ rangeInput[1].max)*100 + "%";
 }
 })
 });
