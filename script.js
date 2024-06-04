@@ -81,7 +81,7 @@ let a = min;
 let b = max;
 let oneSidedAnalysis = a + b;
 
-
+console.log(oneSidedAnalysis)
 
 
 
