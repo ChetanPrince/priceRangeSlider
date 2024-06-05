@@ -15,11 +15,19 @@ rangeInput.forEach(input =>{
             
 
         if(e.target.className = "min-range"){
-            if(maxRange - minRange >=1000){
+            if(maxRange - minRange <1000){
                 rangeInput[0].value = minRange;
-                rangeInput[1].value = maxRange;
-                let percent1 = (rangeInput[0].max/maxRange *100)+"%";
-                progress.computedStyleMap.left = percent1;
+                rangeInput[1].value = minRange + minValGap;
+            }
+            else{
+                let percent1 = (rangeInput[0].value / 100)+"%";
+                let percent2 = ((rangeInput[1].max - maxRange)/ 100)+"%";
+                console.log(percent1);
+                console.log(percent2);
+                // console.log(rangeInput[0].value);
+                // console.log(minRange);
+                progress.style.left = percent1;
+                progress.style.right = percent2;
             }
 
 
