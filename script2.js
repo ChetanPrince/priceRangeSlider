@@ -2,7 +2,7 @@ const rangeInput = document.querySelectorAll(".rangeContainer input");
 const priceInput = document.querySelectorAll(".block input");
 const minValGap = 1000;
 let min = 0;
-let max = 1;
+let max = 1000;
 const progress = document.querySelector(".slider .progress");
 
 
@@ -25,16 +25,21 @@ priceInput.forEach(input =>{
                     priceInput[0].value = maxPrice - minValGap;
                 } }
             else{
-                    let percent1 = (priceInput[0].value/100)+"%";
-                    let percent2 = ((priceInput[1].max - rangeInput[1].value) / 100)+"%";
-                    progress.style.left = percent1;
-                    progress.style.right = percent2;
+                rangeInput[0].value = minPrice;
+                rangeInput[1].value = maxPrice;
+                progress.style.left = ((minPrice / rangeInput[0].max) * 100) + "%";
+                progress.style.right = 100 - ((maxPrice / rangeInput[1].max) * 100) + "%";
                     rangeInput[0].value = priceInput[0].value;
                     rangeInput[1].value = priceInput[1].value;
                 }
         }
         else{
-             alert("Kindly have a minimum input of 0 at Min Price and 1000 at MaxPrice");
+             priceInput[0].value = min;
+             priceInput[1].value = max;
+             rangeInput[0].value = min;
+            rangeInput[1].value = max;
+            progress.style.left = ((minPrice / rangeInput[0].max) * 100) + "%";
+            progress.style.right = 100 - ((maxPrice / rangeInput[1].max) * 100) + "%";
              return;
         }
     })
@@ -60,10 +65,8 @@ rangeInput.forEach(input =>{
             }
             }
         else{
-            let percent1 = (rangeInput[0].value/100)+"%";
-            let percent2 = ((rangeInput[1].max - rangeInput[1].value) / 100)+"%";
-            progress.style.left = percent1;
-            progress.style.right = percent2;
+           progress.style.left = (rangeInput[0].value/100)+"%";
+            progress.style.right = ((rangeInput[1].max - rangeInput[1].value) / 100)+"%";
             priceInput[0].value = rangeInput[0].value;
             priceInput[1].value = rangeInput[1].value;
         }
